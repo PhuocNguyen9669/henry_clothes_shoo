@@ -1,0 +1,97 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="slideshow">
+    <section id="slideshow" class="slider no-pad">
+        <div class="tp-banner-container">
+            <div class="tp-banner" >
+                <ul class="list-unstyled">
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-thumb="https://zunezx.com/upload/image/cache/data/banner/COVER-FB1-fbb-crop-1600-650.jpg">
+                        <img src="https://zunezx.com/upload/image/cache/data/banner/COVER-FB1-fbb-crop-1600-650.jpg" alt="Banner"  title="Banner" data-lazyload="https://zunezx.com/upload/image/cache/data/banner/COVER-FB1-fbb-crop-1600-650.jpg" data-bgposition="left top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    </li>
+                    <li style="cursor: pointer" onclick="location = 'https://zunezx.com/canvas-bag-zune-zx-p1616.html'" data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-thumb="https://zunezx.com/upload/image/cache/data/banner/brand-web-4ab-crop-1600-650.jpg">
+                        <img src="https://zunezx.com/upload/image/cache/data/banner/brand-web-4ab-crop-1600-650.jpg" alt="Banner"  title="Banner" data-lazyload="https://zunezx.com/upload/image/cache/data/banner/brand-web-4ab-crop-1600-650.jpg" data-bgposition="left top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    </li>
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-thumb="https://zunezx.com/upload/image/cache/data/san-pham/Toshiro-JK/banner-web-a4b-crop-1600-650.jpg">
+                        <img src="https://zunezx.com/upload/image/cache/data/san-pham/Toshiro-JK/banner-web-a4b-crop-1600-650.jpg" alt="Banner"  title="Banner" data-lazyload="https://zunezx.com/upload/image/cache/data/san-pham/Toshiro-JK/banner-web-a4b-crop-1600-650.jpg" data-bgposition="left top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    </li>
+                    <li style="cursor: pointer" onclick="location = 'https://beacons.ai/zunezxtuyendung'" data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-thumb="https://zunezx.com/upload/image/cache/data/banner/IMG6136-205-crop-1600-650.PNG">
+                        <img src="https://zunezx.com/upload/image/cache/data/banner/IMG6136-205-crop-1600-650.PNG" alt="Banner"  title="Banner" data-lazyload="https://zunezx.com/upload/image/cache/data/banner/IMG6136-205-crop-1600-650.PNG" data-bgposition="left top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    </li>
+                    <li style="cursor: pointer" onclick="location = 'https://zunezx.com/case-by-zune-zx-cp162'" data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-thumb="https://zunezx.com/upload/image/cache/data/banner/Bản-sao-của-02.02-20.02-481-crop-1600-650.png">
+                        <img src="https://zunezx.com/upload/image/cache/data/banner/Bản-sao-của-02.02-20.02-481-crop-1600-650.png" alt="Banner"  title="Banner" data-lazyload="https://zunezx.com/upload/image/cache/data/banner/Bản-sao-của-02.02-20.02-481-crop-1600-650.png" data-bgposition="left top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript">
+            jQuery('.tp-banner').show().revolution({
+                dottedOverlay: 'none',
+                delay: 3000,
+                startwidth: 1600,
+                startheight: 650,
+
+                hideThumbs: 200,
+                thumbWidth: 50,
+                thumbHeight: 40,
+                thumbAmount: 2,
+
+                navigationType: 'bullet',
+                navigationArrows: 'solo',
+                navigationStyle: 'round',
+
+                touchenabled: 'on',
+                onHoverStop: 'off',
+
+                swipe_velocity: 0.7,
+                swipe_min_touches: 1,
+                swipe_max_touches: 1,
+                drag_block_vertical: false,
+
+                spinner: 'none',
+                keyboardNavigation: 'off',
+
+                navigationHAlign: 'center',
+                navigationVAlign: 'bottom',
+                navigationHOffset: 0,
+                navigationVOffset: 20,
+
+                soloArrowLeftHalign: 'left',
+                soloArrowLeftValign: 'center',
+                soloArrowLeftHOffset: 20,
+                soloArrowLeftVOffset: 0,
+
+                soloArrowRightHalign: 'right',
+                soloArrowRightValign: 'center',
+                soloArrowRightHOffset: 20,
+                soloArrowRightVOffset: 0,
+
+                shadow: 0,
+                fullWidth: 'on',
+                fullScreen: 'off',
+
+                stopLoop: 'off',
+                stopAfterLoops: -1,
+                stopAtSlide: -1,
+
+                shuffle: 'off',
+
+                autoHeight: 'off',
+                forceFullWidth: 'off',
+                fullScreenAlignForce: 'off',
+                minFullScreenHeight: 0,
+                hideNavDelayOnMobile: 1500,
+
+                hideThumbsOnMobile: 'off',
+                hideBulletsOnMobile: 'off',
+                hideArrowsOnMobile: 'off',
+                hideThumbsUnderResolution: 0,
+
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                startWithSlide: 0,
+                fullScreenOffsetContainer: ''
+            });
+        </script>
+    </section>
+</th:block>

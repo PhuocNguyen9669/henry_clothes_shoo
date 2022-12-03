@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html dir="ltr" lang="vi" class="ie8"><![endif]-->
+<!--[if IE 9 ]>
+<html dir="ltr" lang="vi" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="ltr" lang="vi">
+<!--<![endif]-->
+<th:block th:replace="/customer/layout_customer/header_customer :: header-first"/>
+<style>
+
+</style>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLJFBFT"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<th:block th:replace="/customer/layout_customer/header-second :: header-second"/>
+<div class="box-notices">
+    <div class="marquee-wrap">
+        <a href="https://zunezx.com/huong-dan-dat-hang-i14.html" title="Hướng dẫn mua hàng ---&gt; Click xem thêm"><i
+                class="fa fa-angle-right"></i>Hướng dẫn mua hàng ---&gt; Click xem thêm</a>
+    </div>
+    <script>
+        $('.marquee-wrap').marquee({
+            speed: 50,
+            gap: 50,
+            delayBeforeStart: 0,
+            direction: 'left',
+            duplicated: true,
+            pauseOnHover: true
+        });
+    </script>
+</div>
+<th:block th:replace="/customer/layout_customer/slide-show :: slideshow"/>
+
+<div class="has-bg__container">
+    <div class="container">
+        <div class="row">
+            <div class="has-bg__container">
+                <div id="content">
+                    <h1 class="heading-title hidden">Giỏ Hàng</h1>
+                    <div class="container allCartItem">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12">
+                                <div class="cart-product cart-border">
+
+                                    <h2><span>Giỏ Hàng</span></h2>
+                                    <p>Giỏ hàng của bạn có những sản phẩm sau</p>
+
+                                    <div class="table-responsive">
+                                        <table class="table OrderItem">
+                                            <thead>
+                                            <tr>
+                                                <td class="text-center">Hình ảnh</td>
+                                                <td class="text-left">Tên sản phẩm</td>
+                                                <td class="text-left">Số lượng</td>
+                                                <td class="text-right">Đơn Giá</td>
+                                                <td class="text-right">Tổng cộng</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                            <tfoot>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12">
+                                <div class="cart-product cart-border" id="alertCustomer">
+                                    <h2><span>Thông tin khách hàng</span></h2>
+                                    <div class="modal-alert-danger hide">
+
+
+                                    </div>
+                                    <form id="frmCreateCustomerInfo" method="post">
+                                        <fieldset class="row g-3" style="padding-bottom: 20px">
+                                            <div class="col-md-6">
+                                                <label class="form-label">Họ và tên:</label>
+                                                <input type="text" class="form-control" id="fullNameCustomer"
+                                                       name="fullNameCustomer">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Email</label>
+                                                <input type="text" class="form-control" readonly id="emailCustomer"
+                                                       name="emailCustomer">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Số điện thoại</label>
+                                                <input type="text" class="form-control" id="phoneCustomer"
+                                                       name="phoneCustomer">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Địa chỉ</label>
+                                                <input type="text" class="form-control" id="addressCustomer"
+                                                       name="addressCustomer">
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                    <div class="buttons clearfix">
+                                        <br>
+                                        <div class="pull-right">
+                                            <button
+                                                    class="btn btn-primary btn-buy">Thanh toán
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="font-size: 0" class="row" th:object="${User}">
+        <span id="userNameLogin" th:text="${User}"></span>
+    </div>
+</div>
+
+
+<th:block th:replace="/customer/layout_customer/footer-script-customer :: footer"/>
+
+<script src="/assets/libs/peity/jquery.peity.min.js"></script>
+<script src="/assets/libs/apexcharts/apexcharts.min.js"></script>
+<script src="/assets/libs/jquery-vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/assets/libs/jquery-vectormap/jquery-jvectormap-us-merc-en.js"></script>
+<!--<script src="/assets/js/app.min.js"></script>-->
+<script src="/assets/js/sweetalert2.min.js" ></script>
+<script src="/assets/js/iziToast.min.js"></script>
+<script src="/assets/js/appp.js"></script>
+<script src="/assets/js/JSCustomer/order.js"></script>
+
+</body>
+</html>

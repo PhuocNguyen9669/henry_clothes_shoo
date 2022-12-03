@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/login.css">
+    <link rel="stylesheet" href="/assets/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="/assets/css/iziToast.min.css">
+    <style type="text/css">
+        .site-link {
+            padding: 5px 15px;
+            position: fixed;
+            z-index: 99999;
+            background: #fff;
+            box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+            right: 30px;
+            bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .site-link img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="body">
+    <div class="veen">
+        <div class="login-btn splits">
+            <p>Already an user?</p>
+            <button class="active">Login</button>
+        </div>
+        <div class="rgstr-btn splits">
+            <p>Don't have an account?</p>
+            <button>Register</button>
+        </div>
+        <div class="wrapper">
+            <form id="frmLogin" tabindex="500">
+                <h3>Login</h3>
+                <div class="email">
+                    <input type="email" name="usernameLog" id="usernameLog">
+                    <label>Mail or Username</label>
+                </div>
+                <div class="passwd">
+                    <input type="password" name="passwordLog" id="passwordLog">
+                    <label>Password</label>
+                </div>
+                <div class="button">
+                    <button type="button" id="btn-login" class="dark">Login</button>
+                </div>
+            </form>
+            <form id="register" tabindex="502">
+                <h3>Register</h3>
+                <div class="modal-alert-danger"></div>
+                <div class="field-wrap">
+                    <select name="role" id="role" class="form-select">
+                        <option value="1">ADMIN</option>
+                        <option value="2">USER</option>
+                    </select>
+                </div>
+                <div class="username">
+                    <input type="email" name="username" id="username">
+                    <label>User Name</label>
+                </div>
+                <div class="password">
+                    <input type="password" id="password" name="password">
+                    <label>Password</label>
+                </div>
+                <div class="confirm-password">
+                    <input type="password" id="passwordCon" name="passwordCon">
+                    <label>Confirm Password</label>
+                </div>
+                <div>
+                    <button type="button" id="btn-register" class="dark">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/appp.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="/assets/js/login.js"></script>
+<script src="/assets/js/sweetalert2.min.js"></script>
+<script src="/assets/js/iziToast.min.js"></script>
+
+
+<script>
+
+    let role = new Role();
+
+
+    let btnSignUp = $("#btn-register");
+    let btnLogin = $("#btn-login")
+
+
+    function doRegister() {
+        btnSignUp.on("click", () => {
+            let usernameReg = $("#username").val();
+            let passwordReg = $("#password").val();
+            let passwordConReg = $("#passwordCon").val();
+            let roleId = $("#role").val();
+
+            let user = {
+                username: usernameReg,
+                password: passwordReg,
+                role: {
+                    id: roleId
+                }
+            }
+
+            if (usernameReg === "") {
+                App.IziToast.showErrorAlert("Tài khoản không được để trống!")
+            }
+            if (passwordReg === ""){
+                App.IziToast.showErrorAlert("Mật khẩu không được để trống!!");
+            }
+            if (passwordConReg === ""){
+                App.IziToast.showErrorAlert("Mật khẩu xác nhận không được để trống!!");
+                return;
+            }
+
+            if (passwordReg !== passwordConReg) {
+                App.IziToast.showErrorAlert("Mật khẩu không khớp!!!");
+                return;
+            }
+
+            $.ajax({
+                headers: {
+                    "accept": "application/json",
+                    "content-type": "application/json"
+                },
+                type: "POST",
+                url: "http://localhost:8080/api/auth/register",
+                data: JSON.stringify(user)
+            }).done((data) => {
+                console.log(data)
+                $(".wrapper").removeClass("move");
+                $("#usernameLog").val(usernameReg);
+                $("#passwordLog").val(passwordReg);
+                $('.body').css('background','#ff4931');
+                App.IziToast.showSuccessAlert("Register successfully!");
+            }).fail((jqXHR) => {
+                console.log(jqXHR);
+                $('.modal-alert-danger').html('').removeClass('hide').addClass('show');
+                if (jqXHR.responseJSON) {
+                    $.each(jqXHR.responseJSON, (key, item) => {
+                        let str = `<label id="${key}-error" class="error" for="${key}">${item}</label>`;
+                        $("#" + key).addClass("error");
+
+                        $('.modal-alert-danger').append(str);
+
+                    })
+                }
+
+            })
+        })
+    }
+    doRegister();
+
+    function doLogin() {
+        btnLogin.on("click", () => {
+            let username = $("#usernameLog").val();
+            let password = $("#passwordLog").val();
+
+            if (username === "") {
+                App.IziToast.showErrorAlert("Tài khoản không được để trống!");
+            }
+
+            if (password === "") {
+                App.IziToast.showErrorAlert("Mật khẩu không được để trống!");
+                return;
+            }
+
+            let user = {
+                username,
+                password
+            }
+
+            $.ajax({
+                headers: {
+                    "accept": "application/json",
+                    "content-type": "application/json"
+                },
+                type: "POST",
+                url: "http://localhost:8080/api/auth/login",
+                data: JSON.stringify(user)
+            }).done((data) => {
+                App.IziToast.showSuccessAlert("Login successfully!");
+                location.href="/home";
+            }).fail((jqXHR) => {
+                App.IziToast.showErrorAlert("Login error!");
+            })
+
+        })
+    }
+    doLogin();
+
+
+
+</script>
+</body>
+</html>

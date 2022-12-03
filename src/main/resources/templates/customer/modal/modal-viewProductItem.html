@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="modal-viewProductItem">
+    <div id="viewProductItem" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">View Order</h5>
+
+                </div>
+                <div class="modal-body">
+                    <div class="alert-danger hide">
+                    </div>
+
+                    <div class="OrderBill" id="OrderBill">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closess" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>

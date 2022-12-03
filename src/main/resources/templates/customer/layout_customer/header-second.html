@@ -1,0 +1,82 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="header-second">
+
+    <header>
+        <div class="container visible-xs">
+            <div class="row header-mobile">
+                <div class="col-xs-4">
+                    <a href="javascript:void(0);" class="menu-mobile">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+                <div class="col-xs-4">
+                    <div class="logo text-center">
+                        <a href="/customer-view" title="Zune.zx - Unisex" class="logo-link"><img src="https://zunezx.com/upload/image/data/Shape-1-b9f.png" title="Zune.zx - Unisex" alt="Zune.zx - Unisex" class="img-responsive center-block"/></a>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="pull-right">
+                        <a href="javascript:void(0)" title="search" class="header-search header-search-mobile"><img class="icon-in-menu" src="https://zunezx.com/public/home/img/w-search.png" style="filter: brightness(0);" alt="Tìm kiếm..."></a>
+                        <a href="/customer-view" title="Giỏ hàng" class="header-cart"><img class="icon-in-menu" style="filter: brightness(0);" src="https://zunezx.com/public/home/img/w-shop.png" alt="Giỏ hàng"></a>
+                        <a style="margin-left: 10px" href="/customer-view" title="Tài khoản"><img class="icon-in-menu" src="https://zunezx.com/public/home/img/w-account.png" style="filter: brightness(0);" alt="Tài khoản"></a>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $('.header-search-mobile').on('click', function () {
+                    $('.wds-search-header').toggleClass('active')
+                })
+            </script>
+            <div class="searchForm wds-search-header">
+                <input type="text" class="input-control"  name="search" value="" title="Tìm kiếm..." placeholder="Tìm kiếm...">
+                <button class="button wds-search-header-button" title="Tìm kiếm..."><i class="hoverButton"></i><i class="fa fa-search"></i></button>
+            </div>
+            <script>
+                WDS.search('wds-search-header', 'https://zunezx.com/tim-kiem-san-pham.html', 'https://zunezx.com/tim-kiem-tin.html');
+            </script>
+        </div>
+        <div class="logo text-center hidden-xs">
+            <a href="/customer-view" title="Zune.zx - Unisex"><img src="https://zunezx.com/upload/image/data/Shape-1-b9f.png" title="Zune.zx - Unisex" alt="Zune.zx - Unisex" class="img-responsive center-block"/></a>
+        </div>
+        <nav>
+            <div class="text-center menu-wrap">
+                <ul class="list-unstyled main-nav list-inline">
+                    <li>
+                        <a href="/customer-view" target="_self" title="Bộ Sưu Tập">Bộ Sưu Tập</a>
+                    </li>
+                    <li class="list-unstyled">
+                        <a href="/customer-view" target="_self" title="Tất cả sản phẩm">Tất cả sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="/customer-view" target="_self" title="Cửa hàng">Cửa hàng</a>
+                    </li>
+                    <li class='hidden-xs header-account-link'>
+                        <a href="http://localhost:8080/home" title="Tài khoản"><img class="icon-in-menu" src="https://zunezx.com/public/home/img/w-account.png" alt="Tài khoản"></a>
+                    </li>
+                    <li class="hidden-xs">
+                <a th:object="${AmoutCartItem}" href="/customer-view/order" id="btn-Cart-item" style="background-color: #09090b" title="Giỏ hàng" class="header-cart  btn-Cart-item"><img class="icon-in-menu" src="https://zunezx.com/public/home/img/w-shop.png" alt="Giỏ hàng"><span style=" color: white;
+                                                                                                                                                                                                                                            background-color: red;
+                                                                                                                                                                                                                                            border-radius: 50%;
+                                                                                                                                                                                                                                            position: relative;
+                                                                                                                                                                                                                                            padding: 2px 4px 2px 4px;
+                                                                                                                                                                                                                                            font-size: 10px;
+                                                                                                                                                                                                                                            left: -5px;
+                                                                                                                                                                                                                                            bottom: 5px;" th:text="${AmoutCartItem}"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <script>
+            $(document).ready(function () {
+                $('.menu-mobile').on('click', function () {
+                    $('.menu-wrap').slideToggle(200);
+                })
+            });
+            $('.header-search-pc').on('click', function () {
+                $('.wds-search-header').toggleClass('active')
+            })
+        </script>
+    </header>
+
+</th:block>

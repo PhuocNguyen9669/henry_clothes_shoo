@@ -1,0 +1,89 @@
+.modal-body {
+    background: black   ;
+    /*color: red;*/
+}
+
+.modal-content {
+    background-color: black;
+}
+.btn-secondary {
+    background-color: black;
+    color: darkturquoise;
+}
+
+.table-hover {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    color: ghostwhite;
+    font-weight: 600;
+    font-size: 14px;
+}
+table {
+    width: 100%;
+    background: black;
+    color: white;
+    font-size: larger;
+    position: relative;
+    margin-top: 10px;
+}
+
+table thead tr {
+    font-size: 16px;
+    height: 50px;
+}
+
+.btn-outline-light{
+    background: black;
+    color: white;
+}
+
+
+.mt-4 {
+    font-size: 13px;
+}
+
+#urlImageDet {
+    width: 200px;
+    position: relative;
+    right: -27px;
+}
+
+#frmCreateProduct {
+    color: beige;
+}
+
+
+.form-control {
+    background-color: white;
+    color: black;
+    font-weight: 900;
+    font-size: 17px;
+}
+
+div > img {
+    position: relative;
+    right: -36px;
+    vertical-align: middle;
+    border-style: none;
+    width: 357px;
+}
+.form-label {
+    font-size: 16px;
+}
+
+.show{
+    padding-left: 29px;
+    display: block;
+}
+.error {
+    display: list-item;
+    margin-top: 5px;
+    color: red;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.hide{
+    display: none !important;
+}
+

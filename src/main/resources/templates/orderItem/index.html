@@ -1,0 +1,227 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Upvex - Responsive Admin Dashboard Template</title>
+    <th:block th:replace="/layout/head :: head"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
+</head>
+
+<body>
+
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Topbar Start -->
+    <th:block th:replace="/layout/navbar::navbar"/>
+    <!-- end Topbar -->
+
+    <!-- ========== Left Sidebar Start ========== -->
+
+    <th:block th:replace="/layout/slide-left-menu::slide-left-menu"/>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Upvex</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
+                                    <li class="breadcrumb-item active">Dashboard</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Dashboard</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Danh sách đơn đặt hàng</h2>
+                        <table id="table_id" style="width:100%" class="table table-hover">
+                            <thead class="col-12 mb-3">
+                            <tr>
+                                <th>Tên khách hàng</th>
+                                <th>Trạng thái đơn hàng</th>
+                                <th>Tổng tiền</th>
+                                <th>Thời gian đặt hàng</th>
+                                <th colspan="1"></th>
+                            </tr>
+                            </thead>
+                            <tbody class="col-12 mt-4">
+                            <th:block th:each="orderDTO : ${orderDTOS}">
+                                <tr th:id="${'tr_' + orderDTO.id}">
+                                    <td class="text-center" th:text="${orderDTO.fullName}"></td>
+                                    <td class="text-center" th:text="${orderDTO.status}"></td>
+                                    <td class="text-center">
+                                        <span th:text="${#numbers.formatCurrency(orderDTO.grandTotal)}"></span>
+                                    </td>
+                                    <td class="text-center" th:text="*{#dates.format(orderDTO.createdAt, 'dd/MM/yyyy HH:mm')}" ></td>
+                                    <td th:if="${orderDTO.status == 'Đã hủy đơn hàng!' || orderDTO.status == 'Đã duyệt đơn hàng!'&& orderDTO.status != 'Đang chờ duyệt' }"
+                                        class="text-center">
+                                    </td>
+                                    </td>
+                                    <td th:if="${orderDTO.status != 'Đã hủy đơn hàng!' && orderDTO.status != 'Đã duyệt đơn hàng!'&& orderDTO.status == 'Đang chờ duyệt' }"
+                                        class="text-center" >
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <button type="button" th:id="'btn_' + ${orderDTO.id}"
+                                                        th:onclick="approve([[${orderDTO.id}]])"
+                                                        class="btn btn-outline-light "><i class="fas fa-check" style="background-color: white; color: green;"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button type="button" th:id="'btn_' + ${orderDTO.id}"
+                                                        th:onclick="cancel([[${orderDTO.id}]])"
+                                                        class="btn btn-outline-danger"> <i class="fas fa-ban" style="background-color: white; color: green;"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <!--                                        /<td class="text-center">-->
+                                    <!--                                            <button type="button" th:id="'btn_' + ${orderDTO.id}" th:onclick="cancel([[${orderDTO.id}]])" class="btn btn-outline-danger show">Hủy đơn hàng</button>-->
+                                    <!--                                        </td>-->
+
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <!-- Footer Start -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        2019 &copy; Upvex theme by <a href="">Coderthemes</a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-md-right footer-links d-none d-sm-block">
+                            <a href="javascript:void(0);">About Us</a>
+                            <a href="javascript:void(0);">Help</a>
+                            <a href="javascript:void(0);">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end Footer -->
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+
+<!-- Right Sidebar -->
+
+<th:block th:replace="/layout/rightbar::rightbar"/>
+<!-- /Right-bar -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+
+<!-- Vendor js -->
+<th:block th:replace="/layout/script::script"/>
+<!--<script src="/assets/js/datatables.init.js"></script>-->
+<script type="text/javascript" src="/assets/js/jquery-3.5.1.js"></script>
+<!--<script type="text/javascript" src="/assets/js/jquery.dataTables.min.js"></script>-->
+<!--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>-->
+
+<script th:inline="javascript">
+
+    let order = new Order();
+
+    let id = order.id;
+    console.log(id);
+
+    function approve(id) {
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "PUT",
+            "url": "http://localhost:8080/api/orders/approve/" + id,
+            "data": JSON.stringify(order)
+        })
+            .done((data) => {
+                order = data;
+                let str = `
+                 <tr th:id=${order.id}">
+                        <td class="text-center">${order.fullName}</td>
+                        <td class="text-center">${order.status}</td>
+                        <td class="text-center">${new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(order.grandTotal)}
+                        </td>
+
+                        <td class="text-center">${order.createdAt}</td>
+
+                         <td class="text-center" style="width: 200px" >
+
+                        </td>
+                </tr>
+            `;
+                let updateRow = $('#tr_' + order.id);
+                updateRow.replaceWith(str);
+            })
+    }
+
+    function cancel(id) {
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "PUT",
+            "url": "http://localhost:8080/api/orders/cancel/" + id,
+            "data": JSON.stringify(order)
+        })
+            .done((data) => {
+                order = data;
+                let str = `
+                 <tr th:id=${order.id}">
+                        <td class="text-center">${order.fullName}</td>
+                        <td class="text-center">${order.status}</td>
+                        <td class="text-center">${new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(order.grandTotal)}</td>
+                        <td class="text-center">${order.createdAt}</td>
+                        <td class="text-center" style="width: 200px">
+                        </td>
+                </tr>
+            `;
+                let updateRow = $('#tr_' + order.id);
+                    updateRow.replaceWith(str);
+            })
+    }
+
+</script>
+
+</body>
+</html>
